@@ -10,13 +10,13 @@
 
 This is a crude example of a webpage containing an embed interactive map created with Leaflet in R.</br></br>
 
-<iframe width="800" height="600" src="https://romain-louvet.github.io/leafletexample/efd7f8c9.html"></iframe>
+<iframe width="1000" height="600" src="https://romain-louvet.github.io/leafletexample/efd7f8c9.html"></iframe>
 
 </br>
 <b>Credits:</b> Icons made by the <a href="http://www.unocha.org/">UNOCHA</a>, <a href="http://www.elegantthemes.com">elegantthemes.com</a>, 
-and <a href="http://yanlu.de">yanlu.de</a>, from <a href="www.flaticon.com">flaticon.com</a>. Data: Uni. of Tasmania</br></br>
+and <a href="http://yanlu.de">yanlu.de</a>, from <a href="www.flaticon.com">flaticon.com</a>. <b>Data:</b> University of Tasmania</br></br>
 
-<b>Library needed in R:</b> leaflet, htmlwidgets, + shiny</br></br> 
+<b>Library needed in R:</b> leaflet, htmlwidgets, + shiny, + dev.tools</br></br> 
 
 <b>With the interactive map, you can:</b> zoom in & out and move the display; click on markers;</br>
 add a scalebar (if the dev. version from Github is installed);</br>
@@ -41,11 +41,11 @@ your map in a webpage.</br></br>
 
 <b>R code for this example:</b></br>
 <code>
-install.packages("devtools
-install.packages("sp")
-install.packages("htmlwidgets")
-library(devtools)
-install_github("rstudio/leaflet")
+install.packages("devtools")</br>
+install.packages("sp")</br>
+install.packages("htmlwidgets")</br>
+library(devtools)</br>
+install_github("rstudio/leaflet")</br>
 
 library(htmlwidgets)</br>
 library(leaflet)</br>
