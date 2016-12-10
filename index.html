@@ -1,189 +1,142 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Webmapping with Leaflet and R</title>
-  </head>
+<head>
+<title>Webmapping with Leaflet and R</title>
+</head>
 
-  <body>
-    <div id="container">
-      <div class="inner">
+<body>
+<b>Webmapping with Leaflet and R</b></h2> </br></br>
 
-        <header>
-          <h1>Webmapping with Leaflet and R - by R. Louvet</h1>
-          <h2></h2>
-        </header>
+This is a crude example of a webpage containing an embed interactive map created with Leaflet in R.</br></br>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/romain-louvet/leafletexample/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/romain-louvet/leafletexample/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/romain-louvet/leafletexample" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <p>
-</p>
-<p>This is a crude example of a webpage containing an embed interactive map created with Leaflet in R.</p>
-
-<p>
+<iframe width="800" height="400" src="file:///E:/Doctorat/5-Projets/GPS_tourism_tasmania/R_GpsTourTas/2-Outputs/maps/WebMappingLeaflet/56c11565.html"></iframe>
+</br>
 <b>Credits:</b> Icons made by the <a href="http://www.unocha.org/">UNOCHA</a>, <a href="http://www.elegantthemes.com">elegantthemes.com</a>, 
-and <a href="http://yanlu.de">yanlu.de</a>, from <a href="www.flaticon.com">flaticon.com</a>. Data: Uni. of Tasmania</p>
+and <a href="http://yanlu.de">yanlu.de</a>, from <a href="www.flaticon.com">flaticon.com</a>. Data: Uni. of Tasmania</br></br>
 
-<p><b>Library needed in R:</b> leaflet, htmlwidgets, + shiny </p>
+<b>Library needed in R:</b> leaflet, htmlwidgets, + shiny</br></br> 
 
-<p><b>With the interactive map, you can:</b> zoom in &amp; out and move the display; click on markers;
-add a scalebar (if the dev. version from Github is installed);
-add a legend; change the marker's icon; change the colour of markers; add different base-maps;
-add several layers (markers, points, lines, polygons); changed displayed layers;
-display popup messages when click on markers; control the transpareny of the layers.</p>
+<b>With the interactive map, you can:</b> zoom in & out and move the display; click on markers;</br>
+add a scalebar (if the dev. version from Github is installed);</br>
+add a legend; change the marker's icon; change the colour of markers; add different base-maps;</br>
+add several layers (markers, points, lines, polygons); changed displayed layers;</br>
+display popup messages when click on markers; control the transpareny of the layers.</br></br>
 
-<p>NB: if you want to add interactive data query, you'll need to use Shiny (then R needs to be installed on the web server).</p>
+NB: if you want to add interactive data query, you'll need to use Shiny (then R needs to be installed on the web server).</br></br>
 
-<p><b>Using your own data</b> (shapefile, database with coordinates, small raster), you can easily use
-Leaflet javascript library from R to export nice looking interactive maps. You can then embed
-your map in a webpage.</p>
+<b>Using your own data</b> (shapefile, database with coordinates, small raster), you can easily use</br>
+Leaflet javascript library from R to export nice looking interactive maps. You can then embed</br>
+your map in a webpage.</br></br>
 
-<p><b>More on this:</b> <a href="https://rstudio.github.io/leaflet/">RStudio Doc - Leaflet for R</a>; 
-<a href="http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html">Tutorial - Web mapping with Leaflet and R</a>; 
+<b>More on this:</b> <a href="https://rstudio.github.io/leaflet/">RStudio Doc - Leaflet for R</a>; 
+<a href="http://amsantac.co/blog/en/r/2015/08/11/leaflet-R.html">Tutorial - Web mapping with Leaflet and R</a>;</br> 
 <a href="https://cran.r-project.org/web/packages/leaflet/leaflet.pdf">CRAN Doc - Leaflet Package</a>; 
-<a href="https://github.com/rstudio/leaflet">GitHub Repository - Leaflet Dev</a>;
+<a href="https://github.com/rstudio/leaflet">GitHub Repository - Leaflet Dev</a>;</br>
 <a href="http://www.r-graph-gallery.com/portfolio/maps/">Leaflet, examples of maps, on R graph gallery</a>; 
-<a href="http://leafletjs.com/index.html">Leaflet Website (documentation and tutorial)</a></p>
+<a href="http://leafletjs.com/index.html">Leaflet Website (documentation and tutorial)</a></br></br>
 
-<p><b>R code for this example:</b>
+<b>R code for this example:</b></br>
 <code>
 install.packages("devtools
 install.packages("sp")
 install.packages("htmlwidgets")
 library(devtools)
-install_github("rstudio/leaflet")</code></p>
+install_github("rstudio/leaflet")
 
-<p>library(htmlwidgets)
-library(leaflet)
-library(sp) <b># for reprojecting</b>
-
-<b>## PREPARING THE DATA (not relevant to Leaflet per se)##</b></p>
-
-<h1>
-<a id="data-daily-iphone-gps-tracks-of-tourists-visiting-tasmania" class="anchor" href="#data-daily-iphone-gps-tracks-of-tourists-visiting-tasmania" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DATA: daily iphone GPS tracks of tourists visiting Tasmania</h1>
-
-<p></p>
-
-<h1>
-<a id="load-my-data-save-as-rdata" class="anchor" href="#load-my-data-save-as-rdata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>load my data (save as .Rdata)</h1>
-
-<p>mapdata &lt;- "E:/Doctorat/5-Projets/GPS_tourism_tasmania/R_GpsTourTas/"
-mapdata &lt;- paste(mapdata,"/2-Outputs/minmerge/GpsTouTas5minMERGE3.RData",sep="")
-load(file=mapdata) <b># GpsTouTas loaded</b>
-GpsTouTas &lt;- spTransform(GpsTouTas,CRS("+init=epsg:4326")) # change to geo coordinates (vs proj coord)
-
-<b># select one id (one specific phone)</b>
-id &lt;- "56c11565"
-
-<b># subset the data</b>
-datamap &lt;- data.frame(lon=GpsTouTas[GpsTouTas$uuid==id,]<a href="https://github.com/coords" class="user-mention">@coords</a>[,1],
-                      lat=GpsTouTas[GpsTouTas$uuid==id,]<a href="https://github.com/coords" class="user-mention">@coords</a>[,2],
-                      days=GpsTouTas@data$dycnt[GpsTouTas$uuid==id],
-                      datim=GpsTouTas@data$datimNW[GpsTouTas$uuid==id],
-                      weekday=GpsTouTas@data$wkday[GpsTouTas$uuid==id],
-                      kmfromstart=round(GpsTouTas@data$mtrfrst[GpsTouTas$uuid==id]/1000,0),
-                      kmday=round(GpsTouTas@data$mtrday[GpsTouTas$uuid==id]/1000,0),
-                      cmlkmfromstart=round(GpsTouTas@data$mtrfrstcml[GpsTouTas$uuid==id]/1000,0),
-                      cmlkmday=round(GpsTouTas@data$mtrdaycml[GpsTouTas$uuid==id]/1000,0)
-)
-
-<b>## PARAMETERS FOR THE MAP##</b></p>
-
-<h1>
-<a id="colour-for-each-day" class="anchor" href="#colour-for-each-day" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>colour for each day</h1>
-
-<p>colfunc &lt;- colorRampPalette(c("green", "red"))
-pal &lt;- colfunc(nrow(datamap))
-udays &lt;- unique(datamap$days)
-pal &lt;- colfunc(max(udays))
-
-<b># last stop, each day</b>
-lastlist &lt;- sapply(udays,function(x) max(which(datamap$days==x)))
-
-<b># create new marker icons</b>
-iconstops &lt;-makeIcon(
-  iconUrl = '<a href="http://image.flaticon.com/icons/svg/27/27793.svg">http://image.flaticon.com/icons/svg/27/27793.svg</a>',
-  iconWidth = 27, iconHeight = 27,
-  iconAnchorX = 14, iconAnchorY = 0
-)
-iconstart &lt;-makeIcon(
-  iconUrl = '<a href="http://image.flaticon.com/icons/svg/64/64596.svg">http://image.flaticon.com/icons/svg/64/64596.svg</a>',
-  iconWidth = 27, iconHeight = 27,
-  iconAnchorX = 14, iconAnchorY = 0
-)
-iconend &lt;-makeIcon(
-  iconUrl =  '<a href="http://image.flaticon.com/icons/svg/51/51846.svg">http://image.flaticon.com/icons/svg/51/51846.svg</a>',
-  iconWidth = 27, iconHeight = 27,
-  iconAnchorX = 14, iconAnchorY = 0
-)
-
-<b># popup content for markers, by markers category</b>
-content &lt;- paste(c("&lt;b&gt;Start&lt;/b&gt;",
-                   paste("&lt;b&gt;Stop ",1:(length(lastlist)-1),"&lt;/b&gt;"),
-                   paste("&lt;b&gt;Stop ",ifelse(length(lastlist)==2,1,length(lastlist)),"- final stop&lt;/b&gt;")),"&lt;/br&gt;")
-
-content &lt;- sapply(1:length(content),FUN=function(x) paste(content[x],
-                                                          datamap$weekday[c(1,lastlist)][x],
-                                                          datamap$datim[c(1,lastlist)][x],"&lt;/br&gt;"))
-content[-1] &lt;- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Day(s) spent in Tasmania: ",
-                                                                  datamap$day[c(lastlist)][x],"&lt;/br&gt;"))
-content[-1] &lt;- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Straight line from start (km): ",
-                                                                  datamap$kmfromstart[c(lastlist)][x],"&lt;/br&gt;"))
-content[-1] &lt;- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Straight line from last stop (km): ",
-                                                                  datamap$kmday[c(lastlist)][x],"&lt;/br&gt;"))
-content[-1] &lt;- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Distance travelled so far (km): ",
-                                                                  datamap$cmlkmfromstart[c(lastlist)][x],"&lt;/br&gt;"))
-content[-1] &lt;- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Distance travelled from last stop (km): ",
-                                                                  datamap$cmlkmday[c(lastlist)][x]))
-
-<b>## CREATE THE MAP</b>
-m &lt;- leaflet(datamap) %&gt;% addTiles(group="Map")%&gt;% <b># create the map with data and add basemaps</b>
-  addProviderTiles(provider="OpenTopoMap",group = "Topo") %&gt;% 
-  addProviderTiles(provider="Stamen.Toner",group = "Back &amp; White") %&gt;%
-  addProviderTiles(provider="Esri.WorldImagery",group = "Imagery") %&gt;% 
-  addPolylines(lng=datamap[,"lon"],lat=datamap[,"lat"],weight = 2, opacity = 0.5) %&gt;% <b># add lines</b>
-  addCircles(color = ~pal[days],weight = 10) %&gt;% # add circles, with color ramp
-  addMarkers(lng=datamap[1,"lon"],lat=datamap[1,"lat"], <b># add markers, with categories</b>
-             popup = content[1],icon =iconstart) %&gt;%
-  addMarkers(lng=datamap[nrow(datamap),"lon"],lat=datamap[nrow(datamap),"lat"],
-             popup = content[length(content)],icon =iconend)%&gt;%
-  addLegend("bottomright", colors = pal[udays], values = udays, <b># add legend</b>
-            title = "Days",labels=c(1:max(udays))[udays], opacity = 1
-  ) %&gt;% addScaleBar(position = c("bottomleft"),options = list(maxWidth=200,metric=TRUE,imperial=TRUE)) %&gt;% <b># add scale bar</b>
-  addLayersControl(baseGroups = c("Map","Topo","Back &amp; White","Imagery"),
-                   overlayGroups = c("Lines", "Points","Start","Night stops","End"),
-                   options = layersControlOptions(collapsed = FALSE)) <b># add layer display control</b>
-
-<b>## print the map in R</b>
-m
-<b>## save as html file</b>
-saveWidget(m, file=paste(id,".html",sep=""))
-
-</p>
-        </section>
-
-        <footer>
-          Leafletexample is maintained by <a href="https://github.com/romain-louvet">romain-louvet</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
-    </div>
-  </body>
-</html>
+library(htmlwidgets)</br>
+library(leaflet)</br>
+library(sp) <b># for reprojecting</b></br>
+</br>
+<b>## PREPARING THE DATA (not relevant to Leaflet per se)##</br>
+# DATA: daily iphone GPS tracks of tourists visiting Tasmania</br>
+</br>
+# load my data (save as .Rdata)</b></br>
+mapdata <- "E:/Doctorat/5-Projets/GPS_tourism_tasmania/R_GpsTourTas/"</br>
+mapdata <- paste(mapdata,"/2-Outputs/minmerge/GpsTouTas5minMERGE3.RData",sep="")</br>
+load(file=mapdata) <b># GpsTouTas loaded</b></br>
+GpsTouTas <- spTransform(GpsTouTas,CRS("+init=epsg:4326")) # change to geo coordinates (vs proj coord)</br>
+</br>
+<b># select one id (one specific phone)</b></br>
+id <- "56c11565"</br>
+</br>
+<b># subset the data</b></br>
+datamap <- data.frame(lon=GpsTouTas[GpsTouTas$uuid==id,]@coords[,1],</br>
+                      lat=GpsTouTas[GpsTouTas$uuid==id,]@coords[,2],</br>
+                      days=GpsTouTas@data$dycnt[GpsTouTas$uuid==id],</br>
+                      datim=GpsTouTas@data$datimNW[GpsTouTas$uuid==id],</br>
+                      weekday=GpsTouTas@data$wkday[GpsTouTas$uuid==id],</br>
+                      kmfromstart=round(GpsTouTas@data$mtrfrst[GpsTouTas$uuid==id]/1000,0),</br>
+                      kmday=round(GpsTouTas@data$mtrday[GpsTouTas$uuid==id]/1000,0),</br>
+                      cmlkmfromstart=round(GpsTouTas@data$mtrfrstcml[GpsTouTas$uuid==id]/1000,0),</br>
+                      cmlkmday=round(GpsTouTas@data$mtrdaycml[GpsTouTas$uuid==id]/1000,0)</br>
+)</br>
+</br>
+<b>## PARAMETERS FOR THE MAP##</br>
+# colour for each day</b></br>
+colfunc <- colorRampPalette(c("green", "red"))</br>
+pal <- colfunc(nrow(datamap))</br>
+udays <- unique(datamap$days)</br>
+pal <- colfunc(max(udays))</br>
+</br>
+<b># last stop, each day</b></br>
+lastlist <- sapply(udays,function(x) max(which(datamap$days==x)))</br>
+</br>
+<b># create new marker icons</b></br>
+iconstops <-makeIcon(</br>
+  iconUrl = 'http://image.flaticon.com/icons/svg/27/27793.svg',</br>
+  iconWidth = 27, iconHeight = 27,</br>
+  iconAnchorX = 14, iconAnchorY = 0</br>
+)</br>
+iconstart <-makeIcon(</br>
+  iconUrl = 'http://image.flaticon.com/icons/svg/64/64596.svg',</br>
+  iconWidth = 27, iconHeight = 27,</br>
+  iconAnchorX = 14, iconAnchorY = 0</br>
+)</br>
+iconend <-makeIcon(</br>
+  iconUrl =  'http://image.flaticon.com/icons/svg/51/51846.svg',</br>
+  iconWidth = 27, iconHeight = 27,</br>
+  iconAnchorX = 14, iconAnchorY = 0</br>
+)</br>
+</br>
+<b># popup content for markers, by markers category</b></br>
+content <- paste(c("&lt;b&gt;Start&lt;/b&gt;",</br>
+                   paste("&lt;b&gt;Stop ",1:(length(lastlist)-1),"&lt;/b&gt;"),</br>
+                   paste("&lt;b&gt;Stop ",ifelse(length(lastlist)==2,1,length(lastlist)),"- final stop&lt;/b&gt;")),"&lt;/br&gt;")</br>
+</br>
+content <- sapply(1:length(content),FUN=function(x) paste(content[x],</br>
+                                                          datamap$weekday[c(1,lastlist)][x],</br>
+                                                          datamap$datim[c(1,lastlist)][x],"&lt;/br&gt;"))</br>
+content[-1] <- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Day(s) spent in Tasmania: ",</br>
+                                                                  datamap$day[c(lastlist)][x],"&lt;/br&gt;"))</br>
+content[-1] <- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Straight line from start (km): ",</br>
+                                                                  datamap$kmfromstart[c(lastlist)][x],"&lt;/br&gt;"))</br>
+content[-1] <- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Straight line from last stop (km): ",</br>
+                                                                  datamap$kmday[c(lastlist)][x],"&lt;/br&gt;"))</br>
+content[-1] <- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Distance travelled so far (km): ",</br>
+                                                                  datamap$cmlkmfromstart[c(lastlist)][x],"&lt;/br&gt;"))</br>
+content[-1] <- sapply(1:(length(content)-1),FUN=function(x) paste(content[-1][x],"Distance travelled from last stop (km): ",</br>
+                                                                  datamap$cmlkmday[c(lastlist)][x]))</br>
+</br>
+<b>## CREATE THE MAP</b></br>
+m <- leaflet(datamap) %>% addTiles(group="Map")%>% <b># create the map with data and add basemaps</b></br>
+  addProviderTiles(provider="OpenTopoMap",group = "Topo") %>% </br>
+  addProviderTiles(provider="Stamen.Toner",group = "Back & White") %>%</br>
+  addProviderTiles(provider="Esri.WorldImagery",group = "Imagery") %>% </br>
+  addPolylines(lng=datamap[,"lon"],lat=datamap[,"lat"],weight = 2, opacity = 0.5) %>% <b># add lines</b></br>
+  addCircles(color = ~pal[days],weight = 10) %>% # add circles, with color ramp</br>
+  addMarkers(lng=datamap[1,"lon"],lat=datamap[1,"lat"], <b># add markers, with categories</b></br>
+             popup = content[1],icon =iconstart) %>%</br>
+  addMarkers(lng=datamap[nrow(datamap),"lon"],lat=datamap[nrow(datamap),"lat"],</br>
+             popup = content[length(content)],icon =iconend)%>%</br>
+  addLegend("bottomright", colors = pal[udays], values = udays, <b># add legend</b></br>
+            title = "Days",labels=c(1:max(udays))[udays], opacity = 1</br>
+  ) %>% addScaleBar(position = c("bottomleft"),options = list(maxWidth=200,metric=TRUE,imperial=TRUE)) %>% <b># add scale bar</b></br>
+  addLayersControl(baseGroups = c("Map","Topo","Back & White","Imagery"),</br>
+                   overlayGroups = c("Lines", "Points","Start","Night stops","End"),</br>
+                   options = layersControlOptions(collapsed = FALSE)) <b># add layer display control</b></br>
+</br>
+<b>## print the map in R</b></br>
+m</br>
+<b>## save as html file</b></br>
+saveWidget(m, file=paste(id,".html",sep=""))</br>
+</code>
+</body>
